@@ -1,0 +1,136 @@
+/* Background */
+.app {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+/* Dynamic background based on weather */
+.app.clear {
+  background: linear-gradient(135deg, #fbc531, #e1b12c);
+}
+.app.clouds {
+  background: linear-gradient(135deg, #74b9ff, #2d3436);
+}
+.app.rain {
+  background: linear-gradient(135deg, #636e72, #2f3640);
+}
+.app.snow {
+  background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+}
+
+/* Glassmorphism Card */
+.weather-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  width: 420px;
+  max-width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.weather-card input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 15px;
+  width: 100%;
+  outline: none;
+}
+
+.weather-card button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.weather-card button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff);
+}
+
+/* Loading / Error */
+.loading {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.error {
+  color: red;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+/* Weather Info */
+.weather-info {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Clouds */
+.clouds::before,
+.clouds::after {
+  content: "";
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  top: 50px;
+  left: -200px;
+  width: 200px;
+  height: 60px;
+  opacity: 0.5;
+  animation: moveClouds 60s linear infinite;
+}
+.clouds::after {
+  top: 120px;
+  left: -300px;
+  width: 250px;
+  height: 70px;
+  opacity: 0.3;
+  animation-duration: 90s;
+}
+@keyframes moveClouds {
+  from {
+    left: -300px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Animated Rain */
+.rain::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+  animation: rain 0.5s linear infinite;
+  pointer-events: none;
+}
+@keyframes rain {
+  0% {
+    background-position: 0 -100px;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
